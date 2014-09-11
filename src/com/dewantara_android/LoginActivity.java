@@ -30,12 +30,5 @@ public class LoginActivity extends Activity implements Constantstas{
 	public void onClickLogin(View view){
 		loginEngine.login(editTextUserName.getText().toString(), editTextPassword.getText().toString());
 	}
-	
-//	@Override
-//	public boolean onCreateOptionsMenu(Menu menu) {
-//		// Inflate the menu; this adds items to the action bar if it is present.
-//		getMenuInflater().inflate(R.menu.splash_screen, menu);
-//		return true;
-//	}
 
 }

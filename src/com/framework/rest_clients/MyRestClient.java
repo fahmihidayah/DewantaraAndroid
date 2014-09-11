@@ -10,6 +10,7 @@ public class MyRestClient {
 	  //private static final String BASE_URL = "http://localhost/my_chat/";
 //	private static final String BASE_URL = "http://192.168.1.6/ip_url/";
 	private static final String HEADER = "http://";
+	private static final String PATH = "/api/test/";
 	
 	
 	  private static AsyncHttpClient client = new AsyncHttpClient();
@@ -23,6 +24,6 @@ public class MyRestClient {
 	  }
 
 	  private static String getAbsoluteUrl(String relativeUrl) {
-	      return HEADER + DataSingleton.getInstance().getServerAddress() + relativeUrl ;
+	      return HEADER + DataSingleton.getInstance().getServerAddress() + PATH + relativeUrl ;
 	  }
 }

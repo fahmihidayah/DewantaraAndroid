@@ -6,10 +6,19 @@ import java.util.Observable;
 public class DataSingleton extends Observable {
 	private static DataSingleton instance;
 	private String serverAddress = "192.168.1.4:9000";
+	private Guru guru;
 	private String authKey;
 
 	protected DataSingleton() {
 
+	}
+
+	public Guru getGuru() {
+		return guru;
+	}
+
+	public void setGuru(Guru guru) {
+		this.guru = guru;
 	}
 
 	public String getServerAddress() {

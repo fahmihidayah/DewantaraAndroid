@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.models.Constantstas;
+import com.models.DataSingleton;
 import com.response.LoginResponse;
 
 public class LoginEngine implements Constantstas {
@@ -32,6 +33,7 @@ public class LoginEngine implements Constantstas {
 				LoginResponse loginResponse = new Gson().fromJson(response.toString(), LoginResponse.class);
 				if(loginResponse.getStatus().equalsIgnoreCase("200")){
 					Toast.makeText(loginActivity, "Success Login", Toast.LENGTH_LONG).show();
+					DataSingleton.getInstance().setAuthKey(loginResponse.getData().getAuthToken());
 					loginActivity.startActivity(new Intent(loginActivity, MainActivity.class));
 					loginActivity.finish();
 				}
@@ -39,6 +41,19 @@ public class LoginEngine implements Constantstas {
 					Toast.makeText(loginActivity, "User not found", Toast.LENGTH_LONG).show();
 				}
 			}
+		});
+	}
+	
+	public void getMetadata(String userName){
+		RequestParams params = new RequestParams();
+		params.put("userName", userName);
+		params.put("auth_key", DataSingleton.getInstance().getAuthKey());
+		MyRestClient.post(API_METADATA, params, new JsonHttpResponseHandler(){
+			@Override
+			public void onSuccess(JSONObject response) {
+				// kurang di handle
+			}
+			
 		});
 	}
 

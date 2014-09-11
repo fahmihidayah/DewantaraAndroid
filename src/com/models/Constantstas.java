@@ -6,4 +6,5 @@ public interface Constantstas {
 	
 	public static String API_LOGIN = "login";
 	public static String API_LOGOUT = "logout";
+	public static String API_METADATA = "metadata";
 }

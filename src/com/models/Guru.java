@@ -66,5 +66,16 @@ public class Guru implements Serializable {
 	public void setAccount(User account) {
 		this.account = account;
 	}
+	
+	@Override
+	public String toString() {
+		String returnValue = "";
+		returnValue += "NIK : " + getNik() + "\n\n\n";
+		returnValue += "Nama : " + getName() + "\n\n\n";
+		returnValue += "Alamat : " + getAddress() + "\n\n\n";
+		returnValue += "Telepon : " + getPhone() + "\n\n\n";
+		returnValue += "Email : " + getEmail() + "\n\n\n";
+		return returnValue;
+	}
 
 }

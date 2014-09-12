@@ -13,6 +13,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.models.Constantstas;
 import com.models.DataSingleton;
+import com.response.GuruMetaDataResponse;
 import com.response.LoginResponse;
 
 public class LoginEngine implements Constantstas {
@@ -23,7 +24,7 @@ public class LoginEngine implements Constantstas {
 		this.loginActivity = loginActivity;
 	}
 
-	public void login(String userName, String password){
+	public void login(final String userName, String password){
 		RequestParams params = new RequestParams();
 		params.put("userName", userName);
 		params.put("password", password);
@@ -36,9 +37,7 @@ public class LoginEngine implements Constantstas {
 					Toast.makeText(loginActivity, "Success Login", Toast.LENGTH_LONG).show();
 					DataSingleton.getInstance().setAuthKey(loginResponse.getData().getAuthToken());
 					DataSingleton.getInstance().setLogin(true);
-					DataSingleton.getInstance().saveData(loginActivity);
-					loginActivity.startActivity(new Intent(loginActivity, MainActivity.class));
-					loginActivity.finish();
+					getMetadata(userName);
 				}
 				else {
 					Toast.makeText(loginActivity, "User not found", Toast.LENGTH_LONG).show();
@@ -54,8 +53,12 @@ public class LoginEngine implements Constantstas {
 		MyRestClient.post(API_METADATA, params, new JsonHttpResponseHandler(){
 			@Override
 			public void onSuccess(JSONObject response) {
-				// kurang di handle
-			}
+				GuruMetaDataResponse guruMetaDataResponse = new Gson().fromJson(response.toString(), GuruMetaDataResponse.class);
+				DataSingleton.getInstance().setGuru(guruMetaDataResponse.getData().getGuru());
+				DataSingleton.getInstance().saveData(loginActivity);
+				loginActivity.startActivity(new Intent(loginActivity, MainActivity.class));
+				loginActivity.finish();
+			}	
 			
 		});
 	}

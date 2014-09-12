@@ -1,9 +1,13 @@
 package com.models;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.Observable;
 
 import com.framework.common_utilities.SharedPreferenceUtilities;
+import com.framework.file_handler.FileHandler;
 
 import android.content.Context;
 import android.content.BroadcastReceiver.PendingResult;
@@ -52,6 +56,16 @@ public class DataSingleton extends Observable implements Constantstas{
 		preferenceUtilities.putBoolean(LOGIN_STATE, login);
 		preferenceUtilities.putString(AUTH_KEY, authKey);
 		preferenceUtilities.putString(SERVER_ADDRESS, serverAddress);
+		
+		try {
+			FileHandler.saveDataToFile(context, GURU_DATA, Context.MODE_PRIVATE, guru);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void loadData(Context context){
@@ -60,6 +74,22 @@ public class DataSingleton extends Observable implements Constantstas{
 		login = preferenceUtilities.getBoolean(LOGIN_STATE);
 		authKey = preferenceUtilities.getString(AUTH_KEY);
 		serverAddress = preferenceUtilities.getString(SERVER_ADDRESS);
+		
+		try {
+			guru = (Guru) FileHandler.loadDataFromFile(context, GURU_DATA);
+		} catch (StreamCorruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public boolean isLogin() {

@@ -26,12 +26,16 @@ public class MainEngine implements Constantstas{
 	public void logout(){
 		RequestParams params = new RequestParams();
 		params.put("authToken", DataSingleton.getInstance().getAuthKey());
+		Toast.makeText(mainActivity, params.toString(), 1000).show();
 		MyRestClient.post(API_LOGOUT, params, new JsonHttpResponseHandler(){
 			@Override
 			public void onSuccess(JSONObject response) {
 				StringResponse stringResponse = new Gson().fromJson(response.toString(), StringResponse.class);
-				if(stringResponse.getStatus().equalsIgnoreCase("202")){
+				if(stringResponse.getStatus().equalsIgnoreCase("200")){
 					Toast.makeText(mainActivity, stringResponse.getData(), Toast.LENGTH_LONG).show();
+					DataSingleton.getInstance().setLogin(false);
+					DataSingleton.getInstance().setAuthKey("");
+					DataSingleton.getInstance().saveData(mainActivity);
 					mainActivity.startActivity(new Intent(mainActivity, LoginActivity.class));
 					mainActivity.finish();
 				}

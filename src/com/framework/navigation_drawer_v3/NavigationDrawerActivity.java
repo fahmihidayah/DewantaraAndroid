@@ -6,8 +6,6 @@ import com.framework.adapter.CustomAdapter;
 import com.framework.common_utilities.ViewSetterUtilities;
 import com.dewantara_android.R;
 
-
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
@@ -17,6 +15,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -43,6 +42,7 @@ public abstract class NavigationDrawerActivity extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
 
+		mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
 				R.drawable.ic_drawer, // nav menu toggle icon
 				R.string.app_name, // nav drawer open - description for
@@ -51,7 +51,7 @@ public abstract class NavigationDrawerActivity extends Activity {
 									// accessibility
 		) {
 			public void onDrawerClosed(View view) {
-				 
+
 				getActionBar().setTitle(title);
 				// calling onPrepareOptionsMenu() to show action bar icons
 				invalidateOptionsMenu();
@@ -94,6 +94,7 @@ public abstract class NavigationDrawerActivity extends Activity {
 	}
 
 	private void displayView(int position) {
+		
 		// update the main content by replacing fragments
 		Fragment fragment = getFragmentFromIndex(position);
 		if (fragment != null) {
@@ -131,6 +132,16 @@ public abstract class NavigationDrawerActivity extends Activity {
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
+	private class SlideMenuClickListener implements
+			ListView.OnItemClickListener {
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position,
+				long id) {
+			// display view for selected nav drawer item
+			displayView(position);
+		}
+	}
+
 	/**
 	 * overide this method to perform when list item selected
 	 * 
@@ -160,7 +171,8 @@ public abstract class NavigationDrawerActivity extends Activity {
 				MenuDrawer menuDrawer = listData.get(position);
 				ViewSetterUtilities.setTextToView(view, R.id.title,
 						menuDrawer.getTitleMenu());
-				ViewSetterUtilities.setResToImageView(view, R.id.icon, menuDrawer.getResourceImage());
+				ViewSetterUtilities.setResToImageView(view, R.id.icon,
+						menuDrawer.getResourceImage());
 			}
 		};
 	}

@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 public class SplashScreenActivity extends Activity implements Constantstas {
 

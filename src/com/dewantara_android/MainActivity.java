@@ -32,7 +32,10 @@ public class MainActivity extends NavigationDrawerActivity implements
 	public Fragment getFragmentFromIndex(int i) {
 		if (i == 0) {
 			return new ProfileFragment();
-		} else {
+		} 
+		else if(i == 1) {
+			return new ProfileFragment();
+		}else {
 			mainEngine.logout();
 		}
 		return null;
@@ -41,6 +44,7 @@ public class MainActivity extends NavigationDrawerActivity implements
 	@Override
 	public void setListDrawerMenu(ArrayList<MenuDrawer> listMenuDrawers) {
 		listMenuDrawers.add(new MenuDrawer(R.drawable.ic_launcher, "Profile"));
+		listMenuDrawers.add(new MenuDrawer(R.drawable.ic_launcher, "Abseni"));
 		listMenuDrawers.add(new MenuDrawer(R.drawable.ic_launcher, "Logout"));
 	}
 }

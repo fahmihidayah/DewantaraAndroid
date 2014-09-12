@@ -1,5 +1,7 @@
 package com.dewantara_android;
 
+import com.models.DataSingleton;
+
 import android.app.Application;
 import android.content.res.Configuration;
 
@@ -7,7 +9,8 @@ public class DewantaraApp extends Application{
 	
 	@Override
 	public void onCreate() {
-		// TODO Auto-generated method stub
+		DataSingleton.getInstance().setActive(true);
+		DataSingleton.getInstance().saveData(this);
 		super.onCreate();
 	}
 	@Override
@@ -22,7 +25,8 @@ public class DewantaraApp extends Application{
 	}
 	@Override
 	public void onTerminate() {
-		// TODO Auto-generated method stub
+		DataSingleton.getInstance().setActive(false);
+		DataSingleton.getInstance().saveData(this);
 		super.onTerminate();
 	}
 

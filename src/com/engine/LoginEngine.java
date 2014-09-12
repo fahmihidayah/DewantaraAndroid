@@ -27,6 +27,7 @@ public class LoginEngine implements Constantstas {
 		RequestParams params = new RequestParams();
 		params.put("userName", userName);
 		params.put("password", password);
+		Toast.makeText(loginActivity, params.toString(), 2000).show();
 		MyRestClient.post(API_LOGIN, params, new JsonHttpResponseHandler(){
 			@Override
 			public void onSuccess(JSONObject response) {
@@ -34,6 +35,8 @@ public class LoginEngine implements Constantstas {
 				if(loginResponse.getStatus().equalsIgnoreCase("200")){
 					Toast.makeText(loginActivity, "Success Login", Toast.LENGTH_LONG).show();
 					DataSingleton.getInstance().setAuthKey(loginResponse.getData().getAuthToken());
+					DataSingleton.getInstance().setLogin(true);
+					DataSingleton.getInstance().saveData(loginActivity);
 					loginActivity.startActivity(new Intent(loginActivity, MainActivity.class));
 					loginActivity.finish();
 				}

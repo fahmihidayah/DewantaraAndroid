@@ -3,11 +3,20 @@ package com.models;
 import java.util.ArrayList;
 import java.util.Observable;
 
-public class DataSingleton extends Observable {
+import com.framework.common_utilities.SharedPreferenceUtilities;
+
+import android.content.Context;
+import android.content.BroadcastReceiver.PendingResult;
+
+public class DataSingleton extends Observable implements Constantstas{
 	private static DataSingleton instance;
-	private String serverAddress = "192.168.1.4:9000";
+	
 	private Guru guru;
+	
+	private String serverAddress = "192.168.1.5:9000";
 	private String authKey;
+	private boolean login;
+	private boolean active;
 
 	protected DataSingleton() {
 
@@ -35,6 +44,38 @@ public class DataSingleton extends Observable {
 
 	public void setAuthKey(String authKey) {
 		this.authKey = authKey;
+	}
+
+	public void saveData(Context context) {
+		SharedPreferenceUtilities preferenceUtilities = new SharedPreferenceUtilities(context);
+		preferenceUtilities.putBoolean(ACTIVE_STATE, active);
+		preferenceUtilities.putBoolean(LOGIN_STATE, login);
+		preferenceUtilities.putString(AUTH_KEY, authKey);
+		preferenceUtilities.putString(SERVER_ADDRESS, serverAddress);
+	}
+	
+	public void loadData(Context context){
+		SharedPreferenceUtilities preferenceUtilities = new SharedPreferenceUtilities(context);
+		active = preferenceUtilities.getBoolean(ACTIVE_STATE);
+		login = preferenceUtilities.getBoolean(LOGIN_STATE);
+		authKey = preferenceUtilities.getString(AUTH_KEY);
+		serverAddress = preferenceUtilities.getString(SERVER_ADDRESS);
+	}
+
+	public boolean isLogin() {
+		return login;
+	}
+
+	public void setLogin(boolean login) {
+		this.login = login;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	public static DataSingleton getInstance() {

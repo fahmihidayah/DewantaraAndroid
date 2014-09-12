@@ -3,6 +3,10 @@ package com.models;
 public interface Constantstas {
 	public static int DELAYED_SPLASH_SCREEN_TIME = 1000;
 
+	public static String LOGIN_STATE = "LOGIN_STATE";
+	public static String ACTIVE_STATE = "ACTIVE_STATE";
+	public static String AUTH_KEY =	"AUTH_KEY";
+	public static String SERVER_ADDRESS = "SERVER_ADDRESS";
 	
 	public static String API_LOGIN = "login";
 	public static String API_LOGOUT = "logout";

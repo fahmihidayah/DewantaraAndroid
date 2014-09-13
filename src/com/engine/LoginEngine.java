@@ -55,7 +55,8 @@ public class LoginEngine implements Constantstas {
 			public void onSuccess(JSONObject response) {
 				GuruMetaDataResponse guruMetaDataResponse = new Gson().fromJson(response.toString(), GuruMetaDataResponse.class);
 				DataSingleton.getInstance().setGuru(guruMetaDataResponse.getData().getDataUser());
-				
+				DataSingleton.getInstance().setListKelas(guruMetaDataResponse.getData().getKelas());
+				DataSingleton.getInstance().setListMataPelajaran(guruMetaDataResponse.getData().getMatapelajaran());
 				DataSingleton.getInstance().saveData(loginActivity);
 				loginActivity.startActivity(new Intent(loginActivity, MainActivity.class));
 				loginActivity.finish();

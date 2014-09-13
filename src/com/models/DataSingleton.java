@@ -17,6 +17,7 @@ public class DataSingleton extends Observable implements Constantstas{
 	
 	private Guru guru;
 	private ArrayList<Kelas> listKelas;
+	private ArrayList<MataPelajaran> listMataPelajaran;
 	private String serverAddress = "192.168.1.5:9000";
 	private String authKey;
 	private boolean login;
@@ -56,6 +57,14 @@ public class DataSingleton extends Observable implements Constantstas{
 
 	public void setListKelas(ArrayList<Kelas> listKelas) {
 		this.listKelas = listKelas;
+	}
+
+	public ArrayList<MataPelajaran> getListMataPelajaran() {
+		return listMataPelajaran;
+	}
+
+	public void setListMataPelajaran(ArrayList<MataPelajaran> listMataPelajaran) {
+		this.listMataPelajaran = listMataPelajaran;
 	}
 
 	public void saveData(Context context) {

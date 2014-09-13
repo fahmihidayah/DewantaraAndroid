@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.models.Guru;
 import com.models.Kelas;
+import com.models.MataPelajaran;
 
 public class GuruMetaDataResponse extends BaseResponse {
 	private Data data;
@@ -11,7 +12,7 @@ public class GuruMetaDataResponse extends BaseResponse {
 	public class Data {
 		private Guru dataUser;
 		private ArrayList<Kelas> kelas;
-
+		private ArrayList<MataPelajaran> matapelajaran;
 		public Guru getDataUser() {
 			return dataUser;
 		}
@@ -27,6 +28,15 @@ public class GuruMetaDataResponse extends BaseResponse {
 		public void setKelas(ArrayList<Kelas> kelas) {
 			this.kelas = kelas;
 		}
+
+		public ArrayList<MataPelajaran> getMatapelajaran() {
+			return matapelajaran;
+		}
+
+		public void setMatapelajaran(ArrayList<MataPelajaran> matapelajaran) {
+			this.matapelajaran = matapelajaran;
+		}
+		
 
 	}
 

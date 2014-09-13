@@ -21,9 +21,11 @@
 
     <Spinner
         android:id="@+id/spinnerKelas"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/grey_1" 
+        android:background="@color/greendark"
+        
+        android:popupBackground="@color/grey_1"
         android:layout_marginBottom="10dp"/>
     
     
@@ -37,10 +39,12 @@
 
     <Spinner
         android:id="@+id/spinnerMataPelajaran"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/grey_1"
-        android:layout_marginBottom="20dp" />
+        android:background="@color/greendark"
+        android:layout_marginBottom="20dp" 
+        android:popupBackground="@color/grey_1"
+        />
 
     <Button
         android:id="@+id/buttonAbsen"

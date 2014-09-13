@@ -77,6 +77,7 @@ public class DataSingleton extends Observable implements Constantstas{
 		try {
 			FileHandler.saveDataToFile(context, GURU_DATA, Context.MODE_PRIVATE, guru);
 			FileHandler.saveDataToFile(context, LIST_KELAS_DATA, Context.MODE_PRIVATE, listKelas);
+			FileHandler.saveDataToFile(context, LIST_MAPEL_DATA, Context.MODE_PRIVATE, listMataPelajaran);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -96,6 +97,7 @@ public class DataSingleton extends Observable implements Constantstas{
 		try {
 			guru = (Guru) FileHandler.loadDataFromFile(context, GURU_DATA);
 			listKelas = (ArrayList<Kelas>) FileHandler.loadDataFromFile(context, LIST_KELAS_DATA);
+			listMataPelajaran = (ArrayList<MataPelajaran>) FileHandler.loadDataFromFile(context, LIST_MAPEL_DATA);
 		} catch (StreamCorruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

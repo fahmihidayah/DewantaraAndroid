@@ -35,7 +35,7 @@ public class MainActivity extends NavigationDrawerActivity implements
 			return new ProfileFragment();
 		} 
 		else if(i == 1) {
-			return new AbsensiFragment();
+			return new SelectAbsensiFragment();
 		}else {
 			mainEngine.logout();
 		}

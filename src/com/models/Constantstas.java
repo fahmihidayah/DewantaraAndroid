@@ -9,6 +9,7 @@ public interface Constantstas {
 	public static String SERVER_ADDRESS = "SERVER_ADDRESS";
 	public static String GURU_DATA = "GURU_DATA.dat";
 	public static String LIST_KELAS_DATA = "LIST_KELAS_DATA.dat";
+	public static String LIST_MAPEL_DATA = "LIST_MAPEL_DATA.dat";
 	
 	public static String API_LOGIN = "login";
 	public static String API_LOGOUT = "logout";

@@ -35,7 +35,7 @@ public class MainActivity extends NavigationDrawerActivity implements
 			return new ProfileFragment();
 		} 
 		else if(i == 1) {
-			return new ProfileFragment();
+			return new AbsensiFragment();
 		}else {
 			mainEngine.logout();
 		}
@@ -45,7 +45,7 @@ public class MainActivity extends NavigationDrawerActivity implements
 	@Override
 	public void setListDrawerMenu(ArrayList<MenuDrawer> listMenuDrawers) {
 		listMenuDrawers.add(new MenuDrawer(R.drawable.ic_launcher, "Profile"));
-		listMenuDrawers.add(new MenuDrawer(R.drawable.ic_launcher, "Abseni"));
+		listMenuDrawers.add(new MenuDrawer(R.drawable.ic_launcher, "Absensi"));
 		listMenuDrawers.add(new MenuDrawer(R.drawable.ic_launcher, "Logout"));
 	}
 	

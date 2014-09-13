@@ -17,7 +17,6 @@ public class Guru implements Serializable {
 	private String address;
 	private String phone;
 	private String email;
-	private User account;
 
 	public String getNik() {
 		return nik;
@@ -59,14 +58,6 @@ public class Guru implements Serializable {
 		this.email = email;
 	}
 
-	public User getAccount() {
-		return account;
-	}
-
-	public void setAccount(User account) {
-		this.account = account;
-	}
-	
 	@Override
 	public String toString() {
 		String returnValue = "";

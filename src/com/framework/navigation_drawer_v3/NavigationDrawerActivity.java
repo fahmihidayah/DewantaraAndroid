@@ -13,6 +13,7 @@ import android.app.FragmentManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
@@ -23,7 +24,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 @SuppressLint("NewApi")
-public abstract class NavigationDrawerActivity extends Activity {
+public abstract class NavigationDrawerActivity extends FragmentActivity {
 	protected ArrayList<MenuDrawer> listMenuDrawers;
 	protected CustomAdapter<MenuDrawer> adapterMenuDrawers;
 	protected DrawerLayout mDrawerLayout;

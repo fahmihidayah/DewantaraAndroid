@@ -25,8 +25,8 @@ public class MainEngine implements Constantstas{
 	
 	public void logout(){
 		RequestParams params = new RequestParams();
-		params.put("authToken", DataSingleton.getInstance().getAuthKey());
-		Toast.makeText(mainActivity, params.toString(), 1000).show();
+		params.put("auth_key", DataSingleton.getInstance().getAuthKey());
+		Toast.makeText(mainActivity, "Logout", 1000).show();
 		MyRestClient.post(API_LOGOUT, params, new JsonHttpResponseHandler(){
 			@Override
 			public void onSuccess(JSONObject response) {

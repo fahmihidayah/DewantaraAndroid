@@ -55,6 +55,5 @@ public class LoginActivity extends FragmentActivity implements Constantstas {
 			return super.onOptionsItemSelected(item);
 		}
 		return true;
-		
 	}
 }

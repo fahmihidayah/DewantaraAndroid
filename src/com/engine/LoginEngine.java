@@ -54,7 +54,8 @@ public class LoginEngine implements Constantstas {
 			@Override
 			public void onSuccess(JSONObject response) {
 				GuruMetaDataResponse guruMetaDataResponse = new Gson().fromJson(response.toString(), GuruMetaDataResponse.class);
-				DataSingleton.getInstance().setGuru(guruMetaDataResponse.getData().getGuru());
+				DataSingleton.getInstance().setGuru(guruMetaDataResponse.getData().getDataUser());
+				
 				DataSingleton.getInstance().saveData(loginActivity);
 				loginActivity.startActivity(new Intent(loginActivity, MainActivity.class));
 				loginActivity.finish();

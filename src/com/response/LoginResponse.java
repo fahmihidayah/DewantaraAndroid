@@ -12,14 +12,14 @@ public class LoginResponse extends BaseResponse {
 	}
 
 	public class Data {
-		private String authToken;
+		private String auth_token;
 
 		public String getAuthToken() {
-			return authToken;
+			return auth_token;
 		}
 
 		public void setAuthToken(String authToken) {
-			this.authToken = authToken;
+			this.auth_token = authToken;
 		}
 	}
 	

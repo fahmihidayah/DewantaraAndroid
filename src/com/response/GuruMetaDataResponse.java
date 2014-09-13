@@ -1,21 +1,33 @@
 package com.response;
 
-import com.models.Guru;
+import java.util.ArrayList;
 
-public class GuruMetaDataResponse extends BaseResponse{
+import com.models.Guru;
+import com.models.Kelas;
+
+public class GuruMetaDataResponse extends BaseResponse {
 	private Data data;
 
-	public class Data{
-		private Guru guru;
+	public class Data {
+		private Guru dataUser;
+		private ArrayList<Kelas> kelas;
 
-		public Guru getGuru() {
-			return guru;
+		public Guru getDataUser() {
+			return dataUser;
 		}
 
-		public void setGuru(Guru guru) {
-			this.guru = guru;
+		public void setDataUser(Guru dataUser) {
+			this.dataUser = dataUser;
 		}
-		
+
+		public ArrayList<Kelas> getKelas() {
+			return kelas;
+		}
+
+		public void setKelas(ArrayList<Kelas> kelas) {
+			this.kelas = kelas;
+		}
+
 	}
 
 	public Data getData() {
@@ -25,6 +37,5 @@ public class GuruMetaDataResponse extends BaseResponse{
 	public void setData(Data data) {
 		this.data = data;
 	}
-	
 
 }

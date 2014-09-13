@@ -16,7 +16,7 @@ public class DataSingleton extends Observable implements Constantstas{
 	private static DataSingleton instance;
 	
 	private Guru guru;
-	
+	private ArrayList<Kelas> listKelas;
 	private String serverAddress = "192.168.1.5:9000";
 	private String authKey;
 	private boolean login;
@@ -50,6 +50,14 @@ public class DataSingleton extends Observable implements Constantstas{
 		this.authKey = authKey;
 	}
 
+	public ArrayList<Kelas> getListKelas() {
+		return listKelas;
+	}
+
+	public void setListKelas(ArrayList<Kelas> listKelas) {
+		this.listKelas = listKelas;
+	}
+
 	public void saveData(Context context) {
 		SharedPreferenceUtilities preferenceUtilities = new SharedPreferenceUtilities(context);
 		preferenceUtilities.putBoolean(ACTIVE_STATE, active);
@@ -59,6 +67,7 @@ public class DataSingleton extends Observable implements Constantstas{
 		
 		try {
 			FileHandler.saveDataToFile(context, GURU_DATA, Context.MODE_PRIVATE, guru);
+			FileHandler.saveDataToFile(context, LIST_KELAS_DATA, Context.MODE_PRIVATE, listKelas);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -77,6 +86,7 @@ public class DataSingleton extends Observable implements Constantstas{
 		
 		try {
 			guru = (Guru) FileHandler.loadDataFromFile(context, GURU_DATA);
+			listKelas = (ArrayList<Kelas>) FileHandler.loadDataFromFile(context, LIST_KELAS_DATA);
 		} catch (StreamCorruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

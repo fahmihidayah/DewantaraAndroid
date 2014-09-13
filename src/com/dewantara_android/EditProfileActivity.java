@@ -34,10 +34,11 @@ public class EditProfileActivity extends Activity implements Constantstas {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.edit_profile_activity);
+		initialComponent();
 	}
 	
 	
 	public void onClickSimpan(View view){
-		
+		editProfileEngine.updateProfile();
 	}
 }

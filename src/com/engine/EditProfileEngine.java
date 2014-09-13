@@ -2,13 +2,17 @@ package com.engine;
 
 import org.json.JSONObject;
 
+import android.widget.Toast;
+
 import com.dewantara_android.EditProfileActivity;
 import com.framework.rest_clients.MyRestClient;
+import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.models.Constantstas;
 import com.models.DataSingleton;
 import com.models.Guru;
+import com.response.UpdateGuruResponse;
 
 public class EditProfileEngine implements Constantstas {
 	private EditProfileActivity editProfileActivity;
@@ -48,7 +52,11 @@ public class EditProfileEngine implements Constantstas {
 				new JsonHttpResponseHandler() {
 					@Override
 					public void onSuccess(JSONObject response) {
-						
+						UpdateGuruResponse guruResponse = new Gson().fromJson(response.toString(), UpdateGuruResponse.class);
+						DataSingleton.getInstance().setGuru(guruResponse.getData());
+						DataSingleton.getInstance().saveData(editProfileActivity);
+						Toast.makeText(editProfileActivity, "Data diupdate", Toast.LENGTH_LONG).show();
+						editProfileActivity.finish();
 					}
 				});
 

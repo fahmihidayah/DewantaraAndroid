@@ -12,35 +12,44 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class ProfileFragment extends Fragment{
-	
+public class ProfileFragment extends Fragment {
+
 	private View rootView;
 	private TextView textViewProfile;
 	private Button buttonEditProfile;
-	
-	private void initialComponent(){
-		buttonEditProfile = (Button) rootView.findViewById(R.id.buttonEditProfile);
-		textViewProfile = (TextView) rootView.findViewById(R.id.textViewProfile);
-		if(DataSingleton.getInstance().getGuru() != null){
-			textViewProfile.setText(DataSingleton.getInstance().getGuru().toString());	
-		}
-		
+
+	private void initialComponent() {
+		buttonEditProfile = (Button) rootView
+				.findViewById(R.id.buttonEditProfile);
+		textViewProfile = (TextView) rootView
+				.findViewById(R.id.textViewProfile);
+
 		buttonEditProfile.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				getActivity().startActivity(new Intent(getActivity(), EditProfileActivity.class));
+				getActivity().startActivity(
+						new Intent(getActivity(), EditProfileActivity.class));
 			}
-			
+
 		});
 	}
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		rootView = inflater.inflate(R.layout.profile_fragment, null);
 		initialComponent();
 		return rootView;
+	}
+
+	@Override
+	public void onResume() {
+		if (DataSingleton.getInstance().getGuru() != null) {
+			textViewProfile.setText(DataSingleton.getInstance().getGuru()
+					.toString());
+		}
+		super.onResume();
 	}
 
 }

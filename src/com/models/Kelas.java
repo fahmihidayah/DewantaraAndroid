@@ -31,5 +31,5 @@ public class Kelas implements Serializable{
 	public void setListSiswa(ArrayList<Siswa> listSiswa) {
 		this.listSiswa = listSiswa;
 	}
-
+	
 }

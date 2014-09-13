@@ -6,6 +6,7 @@ import java.util.Date;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,6 +31,12 @@ public class ViewSetterUtilities {
 		ImageView imageView = (ImageView) rootView.findViewById(imageViewResource);
 		imageView.setImageResource(imageResource);
 		return  imageView;
+	}
+	
+	public static CheckBox setStateToCheckBox(View rootView, int checkBoxResource, boolean state){
+		CheckBox checkBox = (CheckBox) rootView.findViewById(checkBoxResource);
+		checkBox.setChecked(state);
+		return checkBox;
 	}
 	
 }

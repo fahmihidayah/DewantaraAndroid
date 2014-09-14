@@ -28,6 +28,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:text="Absen"
+        android:onClick="onClickAbsen"
         android:background="@drawable/button_theme" />
 
 </RelativeLayout>

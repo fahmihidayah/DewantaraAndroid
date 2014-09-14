@@ -57,11 +57,10 @@ public class AbsensiActivity extends Activity implements Constantstas {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.absensi_activity);
 		iniitalComponent();
-
 	}
 	
 	public void onClickAbsen(View view){
-		
+		absensiEngine.absen();
 	}
 
 }

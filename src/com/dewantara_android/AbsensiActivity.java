@@ -59,6 +59,7 @@ public class AbsensiActivity extends Activity implements Constantstas {
 		iniitalComponent();
 	}
 	
+	
 	public void onClickAbsen(View view){
 		absensiEngine.absen();
 	}
